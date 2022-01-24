@@ -1,0 +1,26 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Licence
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-3">
+
+		<div>
+			<a href="{{ path('main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('licence_list') }}" class="btn btn-outline-primary">
+				Liste des licences
+			</a>
+		</div>
+
+		<div class="container border rounded w-50 p-5 mt-5">
+			<h1>{{ licence.name }}</h1>
+			<p>{{ licence.description }}</p>
+			<p>{{ licence.media }}</p>
+		</div>
+	</div>
+
+{% endblock %}

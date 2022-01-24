@@ -1,0 +1,54 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Produit
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="my-3">
+			<a href="{{ path('admin_main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('admin_product_list') }}" class="btn btn-outline-primary">
+				Retour à la liste
+			</a>
+		</div>
+	</div>
+
+	<div class="container p-3 w-50">
+	<h1>Produit</h1>
+		{{ form_start(productForm) }}
+		<div class="mb-3 mt-5">
+			{{ form_label(productForm.name, 'Nom : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(productForm.name, {'attr' : {'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(productForm.price, 'Prix : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(productForm.price, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(productForm.stock, 'Stock : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(productForm.stock, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(productForm.licence, 'Licence : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(productForm.licence, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(productForm.category, 'Categorie : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(productForm.category, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mt-5">
+		{{ form_widget(productForm.enregistrer, { 'attr' : {'class' : 'btn btn-outline-primary'} } ) }}
+		</div>
+
+		{{ form_end(productForm) }}
+	</div>
+
+{% endblock %}

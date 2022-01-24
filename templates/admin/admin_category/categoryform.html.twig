@@ -1,0 +1,44 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Categorie
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="my-3">
+			<a href="{{ path('admin_main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('admin_category_list') }}" class="btn btn-outline-primary">
+				Retour à la liste
+			</a>
+		</div>
+	</div>
+
+	<div class="container p-3 w-50">
+	<h1>Categorie</h1>
+		{{ form_start(categoryForm) }}
+		<div class="mb-3 mt-5">
+			{{ form_label(categoryForm.name, 'Nom : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(categoryForm.name, {'attr' : {'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(categoryForm.description, 'Description : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(categoryForm.description, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(categoryForm.media, 'Media : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(categoryForm.media, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mt-5">
+		{{ form_widget(categoryForm.enregistrer, { 'attr' : {'class' : 'btn btn-outline-primary'} } ) }}
+		</div>
+
+		{{ form_end(categoryForm) }}
+	</div>
+
+{% endblock %}

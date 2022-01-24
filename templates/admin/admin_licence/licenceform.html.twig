@@ -1,0 +1,44 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Licence
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="my-3">
+			<a href="{{ path('admin_main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('admin_licence_list') }}" class="btn btn-outline-primary">
+				Retour à la liste
+			</a>
+		</div>
+	</div>
+
+	<div class="container p-3 w-50">
+	<h1>Licence</h1>
+		{{ form_start(licenceForm) }}
+		<div class="mb-3 mt-5">
+			{{ form_label(licenceForm.name, 'Nom : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(licenceForm.name, {'attr' : {'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(licenceForm.description, 'Description : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(licenceForm.description, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(licenceForm.media, 'Media : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(licenceForm.media, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mt-5">
+		{{ form_widget(licenceForm.enregistrer, { 'attr' : {'class' : 'btn btn-outline-primary'} } ) }}
+		</div>
+
+		{{ form_end(licenceForm) }}
+	</div>
+
+{% endblock %}
