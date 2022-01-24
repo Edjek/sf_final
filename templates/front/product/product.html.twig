@@ -1,0 +1,28 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Produit
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-3">
+
+		<div>
+			<a href="{{ path('main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('product_list') }}" class="btn btn-outline-primary">
+				Liste des produits
+			</a>
+		</div>
+
+		<div class="container border rounded w-50 p-5 mt-5">
+			<h1>{{ product.name }}</h1>
+			<p>{{ product.price }}</p>
+			<p>{{ product.stock }}</p>
+			<p>{{ product.licence.name }}</p>
+			<p>{{ product.category.name }}</p>
+		</div>
+	</div>
+
+{% endblock %}

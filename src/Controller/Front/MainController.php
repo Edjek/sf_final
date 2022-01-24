@@ -2,17 +2,20 @@
 
 namespace App\Controller\Front;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
-    #[Route('/main', name: 'main')]
-    public function index(): Response
+    #[Route('/', name: 'main')]
+    public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
+        $products  = $productRepository->findThreeArticleByRand();
+
+        return $this->render('front/main/index.html.twig', [
+            'products' => $products
         ]);
     }
 }
