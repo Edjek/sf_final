@@ -5,11 +5,11 @@
 
 
 {% block body %}
-	<div class="container d-flex justify-content-around">
+	<div class="container d-flex justify-content-around gap-3">
 		{% for product in products %}
-			<div class="card mx-3 text-center" style="width: 18rem;">
+			<div class="card text-center" style="width: 18rem;">
 				{% for image in product.images %}
-					<img src="{{ asset('upload/'~image.src) }}" class="card-img-top" alt=" {{ image.alt }}" width="">
+					<img src="{{ asset('upload/'~image.src) }}" class="card-img-top" alt=" {{ image.alt }}">
 				{% endfor %}
 				<div class="card-body">
 					<h1 class="card-title">{{ product.name }}</h1>
@@ -17,7 +17,7 @@
 					<h4 class="card-title">{{ product.licence.name }}</h4>
 					<p class="card-text">{{ product.price }}</p>
 					<p class="card-text">{{ product.stock }}</p>
-					<a href="{{ path('product_show', { 'id' : product.id }) }}">Selectionner</a>
+					<a href="{{ path('product_show', { 'id' : product.id }) }}" class="btn btn-outline-primary">Selectionner</a>
 				</div>
 			</div>
 		{% endfor %}

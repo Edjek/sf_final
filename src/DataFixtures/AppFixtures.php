@@ -64,7 +64,7 @@ class AppFixtures extends Fixture
             $licence = $this->licenceRepository->find($id_licence);
 
             $product->setName($faker->word);
-            $product->setPrice($faker->randomFloat(2, 10, 200));
+            $product->setPrice($faker->randomFloat(1, 10, 200));
             $product->setStock($faker->numberBetween(0, 100));
             $product->setCategory($category);
             $product->setLicence($licence);
