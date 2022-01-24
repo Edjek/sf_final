@@ -1,0 +1,28 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Image
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-3">
+
+		<div>
+			<a href="{{ path('main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('image_list') }}" class="btn btn-outline-primary">
+				Liste des images
+			</a>
+		</div>
+
+		<div class="container border rounded w-50 p-5 mt-5">
+			<h1>{{ image.title }}</h1>
+			<p>{{ image.src }}</p>
+			<p><img src="{{ asset('upload/'~image.src) }}" alt="" width="150"></p>
+			<p>{{ image.alt }}</p>
+			<p>{{ image.produit.name }}</p>
+		</div>
+	</div>
+
+{% endblock %}
