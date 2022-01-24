@@ -1,0 +1,25 @@
+.search {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+}
+
+.log {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+}
+
+.admin {
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    width: 195px;
+}
+
+.sign-up,
+.compte {
+    position: fixed;
+    top: 50px;
+    right: 130px;
+}
