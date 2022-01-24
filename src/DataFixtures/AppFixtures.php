@@ -3,13 +3,14 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\User;
 use App\Entity\Image;
 use App\Entity\Licence;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Repository\LicenceRepository;
-use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -85,6 +86,17 @@ class AppFixtures extends Fixture
             $image->setProduct($product);
 
             $manager->persist($image);
+            $manager->flush();
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            $user = new User();
+
+            $user->setEmail($faker->email);
+            $user->setRoles(["ROLE_USER"]);
+            $user->setPassword($faker->password);
+
+            $manager->persist($user);
             $manager->flush();
         }
     }
