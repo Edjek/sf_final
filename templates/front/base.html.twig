@@ -21,7 +21,7 @@
 		{% endblock %}
 	</head>
 	<body>
-		<header class="header mb-3 p-2">
+		<header class="header border-bottom mb-3 p-1">
 			<nav class="navbar navbar-default navbar-fixed-top navbar">
 				<a href="{{path('main')}}">
 					<img src="{{ asset('img/logo/logo.jpg') }}" alt="" width="70"/>
@@ -32,34 +32,39 @@
 						<input type="submit" class="btn btn-outline-primary" value="Recherche">
 					</div>
 				</form>
-				<a href="{{path('category_list')}}" class="btn btn-outline-primary">
-					Categories
-				</a>
-				<a href="{{path('licence_list')}}" class="btn btn-outline-primary">
-					Licences
-				</a>
 				<div>
-					{% if app.user %}
-						{% if app.user.roles[0] == 'ROLE_ADMIN' %}
-							<a href="{{path('admin_main')}}" class="btn btn-outline-dark admin">
-								Administration
-							</a>
-						{% endif %}
-						<a href="{{path('update_user')}}" class="btn btn-outline-primary">
-							Mon compte
-						</a>
-						<a href="{{path('app_logout')}}" class="btn btn-outline-primary">
-							Logout
-						</a>
-					{% else %}
+					<a href="{{path('category_list')}}" class="btn btn-outline-primary">
+						Categories
+					</a>
+					<a href="{{path('licence_list')}}" class="btn btn-outline-primary">
+						Licences
+					</a>
+				</div>
+				<div>
+					{% if app.user is null %}
 						<a href="{{path('app_register')}}" class="btn btn-outline-primary">
 							Sign up
 						</a>
 						<a href="{{path('app_login')}}" class="btn btn-outline-primary">
 							Sign in
 						</a>
+					{% else %}
+						<a href="{{path('update_user')}}" class="btn btn-outline-primary">
+							Mon compte
+						</a>
+						<a href="{{path('app_logout')}}" class="btn btn-outline-primary">
+							Logout
+						</a>
+						{% if app.user.roles[0] == 'ROLE_ADMIN' %}
+							<a href="{{path('admin_main')}}" class="btn btn-outline-dark admin">
+								Administration
+							</a>
+						{% endif %}
 					{% endif %}
 				</div>
+				<a href="#" class="btn btn-outline-primary">
+					<i class="bi bi-cart2"></i>
+				</a>
 
 			</nav>
 		</header>
