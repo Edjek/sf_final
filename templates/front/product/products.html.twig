@@ -45,6 +45,19 @@
 				{% endfor %}
 			</tbody>
 		</table>
-	</div>
-
-{% endblock %}
+		{% for product in products %}
+		<div class="card" style="width: 18rem;">
+			{% for image in product.images %}
+				<img src="{{ asset('upload/'~image.src) }}" class="card-img-top" alt=" {{ image.alt }}" width="">
+			{% endfor %}
+			<div class="card-body">
+				<h5 class="card-title">{{ product.name }}</h5>
+				<h4 class="card-title">{{ product.category.name }}</h4>
+				<h4 class="card-title">{{ product.licence.name }}</h4>
+				<p class="card-text">{{ product.price }}</p>
+				<p class="card-text">{{ product.stock }}</p>
+				<a href="{{ path('product_show', { 'id' : product.id }) }}">Selectionner</a>
+			</div>
+		</div>
+	{% endfor %}
+</div>{% endblock %}

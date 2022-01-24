@@ -5,12 +5,21 @@
 
 
 {% block body %}
-	<div class="container">
-		<h1>Hello !</h1>
+	<div class="container d-flex justify-content-around">
 		{% for product in products %}
-			<p>
-				{{ product.name }}
-			</p>
+			<div class="card mx-3 text-center" style="width: 18rem;">
+				{% for image in product.images %}
+					<img src="{{ asset('upload/'~image.src) }}" class="card-img-top" alt=" {{ image.alt }}" width="">
+				{% endfor %}
+				<div class="card-body">
+					<h1 class="card-title">{{ product.name }}</h1>
+					<h4 class="card-title">{{ product.category.name }}</h4>
+					<h4 class="card-title">{{ product.licence.name }}</h4>
+					<p class="card-text">{{ product.price }}</p>
+					<p class="card-text">{{ product.stock }}</p>
+					<a href="{{ path('product_show', { 'id' : product.id }) }}">Selectionner</a>
+				</div>
+			</div>
 		{% endfor %}
 	</div>
 
