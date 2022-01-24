@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Image
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="my-3">
+			<a href="{{ path('admin_main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('admin_image_list') }}" class="btn btn-outline-primary">
+				Retour à la liste
+			</a>
+		</div>
+	</div>
+
+	<div class="container p-3 w-50">
+	<h1 class="ms-auto">Image</h1>
+		{{ form_start(imageForm) }}
+		<div class="mb-3 mt-5">
+			{{ form_label(imageForm.title, 'Titre : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(imageForm.title, {'attr' : {'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_widget(imageForm.src, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(imageForm.alt, 'Alt : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(imageForm.alt, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(imageForm.product, 'Produit : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+			{{ form_widget(imageForm.product, {'attr' : { 'class' : 'form-control'} } ) }}
+		</div>
+
+		<div class="mt-5">
+		{{ form_widget(imageForm.enregistrer, { 'attr' : {'class' : 'btn btn-outline-primary'} } ) }}
+		</div>
+
+		{{ form_end(imageForm) }}
+	</div>
+
+{% endblock %}

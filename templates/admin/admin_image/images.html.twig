@@ -1,0 +1,65 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Images!
+{% endblock %}
+
+{% block body %}
+
+	<div class="container p-3 mt-3">
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				{{ message }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endfor %}
+
+		<div class="my-3">
+			<a href="{{ path('admin_main') }}" class="btn btn-outline-primary">
+				Accueil
+			</a>
+			<a href="{{ path('admin_create_image') }}" class="btn btn-outline-primary">
+				Ajouter<i class="bi bi-plus-circle-dotted ms-2"></i>
+			</a>
+		</div>
+
+		<table class="table table-hover text-center">
+			<thead>
+				<tr>
+					<th scope="col">Image</th>
+					<th scope="col">Title</th>
+					<th scope="col">Fichier</th>
+					<th scope="col">Alt</th>
+					<th scope="col">Véhicule</th>
+					<th scope="col">Modifier</th>
+					<th scope="col">Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for image in images %}
+					<tr>
+						<td>
+							<a href="{{ path('admin_update_image', { 'id' : image.id }) }}">
+								<img src="{{ asset('upload/'~image.src) }}" alt="" width="100px">
+							</a>
+						</td>
+						<td>{{ image.title }}</td>
+						<td>{{ image.src }}</td>
+						<td>{{ image.alt }}</td>
+						<td>{{ image.product.name }}</td>
+						<td>
+							<a href="{{ path('admin_update_image', { 'id' : image.id }) }}">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+						</td>
+						<td>
+							<a href="{{ path('admin_delete_image', { 'id' : image.id }) }}">
+								<i class="bi bi-trash text-danger"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
