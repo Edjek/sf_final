@@ -204,6 +204,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getCardNumber(): ?string
+    {
+        return $this->card_number;
+    }
+
+    public function setCardNumber(?string $card_number): self
+    {
+        $this->card_number = $card_number;
+
+        return $this;
+    }
+
+    public function getCardName(): ?string
+    {
+        return $this->card_name;
+    }
+
+    public function setCardName(?string $card_name): self
+    {
+        $this->card_name = $card_name;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Comment[]
      */
@@ -230,30 +254,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $comment->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getCardNumber(): ?string
-    {
-        return $this->card_number;
-    }
-
-    public function setCardNumber(?string $card_number): self
-    {
-        $this->card_number = $card_number;
-
-        return $this;
-    }
-
-    public function getCardName(): ?string
-    {
-        return $this->card_name;
-    }
-
-    public function setCardName(?string $card_name): self
-    {
-        $this->card_name = $card_name;
 
         return $this;
     }
