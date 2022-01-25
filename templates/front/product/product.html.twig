@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<div class="container mt-3">
+	<div class="container my-3">
 
 		<div>
 			<a href="{{ path('main') }}" class="btn btn-outline-primary">
@@ -24,15 +24,39 @@
 			<p>{{ product.category.name }}</p>
 		</div>
 
-{% if app.user %}
-		<form action="{{ path('comment')}}" method="get">
-			<div class="input-group">
-				<input type="text" name="search" placeholder="Recherche" class="form-control search-input">
-				<input type="submit" class="btn btn-outline-primary" value="Recherche">
+		{% if product.comments %}
+			<div class="container border rounded w-50 p-5 mt-5">
+				<h2>Commentaires</h2>
+				{% for comment in product.comments %}
+					<div class="border-bottom p-2">
+						<p>{{ comment.user.lastname }}
+							{{ comment.user.firstname }}</p>
+						<p>{{ comment.content }}</p>
+						<p>{{ comment.date | date('d-m-Y') }}</p>
+					</div>
+				{% endfor %}
 			</div>
-		</form>
-{% endif %}
+		{% endif %}
+
+
+		{% if app.user %}
+			<div class="container w-50 p-3 mt-3">
+				{{ form_start(commentForm) }}
+				<div class="mb-3">
+					{{ form_label(commentForm.content, 'Commentaire : ', {'label_attr' : { 'class' : 'form-label' } } ) }}
+					{{ form_widget(commentForm.content, {'attr' : { 'class' : 'form-control'} } ) }}
+				</div>
+
+				<div class="mt-3">
+					{{ form_widget(commentForm.enregistrer, { 'attr' : {'class' : 'btn btn-outline-primary'} } ) }}
+				</div>
+				{{ form_end(commentForm) }}
+			</div>
+		{% else %}
+		<div class="container border rounded w-50 p-2 mt-3">
+			<p>Connectez vous pour commenter</p>
+			</div>
+		{% endif %}
 
 	</div>
-
 {% endblock %}

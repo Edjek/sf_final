@@ -5,6 +5,7 @@
 
 {% block body %}
 	<div class="container w-50">
+
 		<form method="post">
 			{% if error %}
 				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -23,6 +24,7 @@
 				<label for="inputEmail">Email</label>
 				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
 			</div>
+
 			<div class="my-3">
 				<label for="inputPassword">Mot de passe</label>
 				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
@@ -31,13 +33,15 @@
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 			<div class="mb-3">
-				<input type="submit" class="btn btn-lg btn-outline-primary mt-3">
+				<input type="submit" class="btn btn-outline-dark mt-3">
 			</div>
 		</form>
+
 		<div class="mb-3">
-			<a href="{{path('app_register')}}" class="btn btn-lg btn-outline-danger">
+			<a href="{{path('app_register')}}" class="btn btn-outline-danger">
 				Créer un compte
 			</a>
 		</div>
+
 	</div>
 {% endblock %}

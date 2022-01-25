@@ -6,18 +6,9 @@
 {% block body %}
 
 	<div class="container p-3 mt-3">
-		{% for message in app.flashes('notice') %}
-			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				{{ message }}
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		{% endfor %}
-
-		<div class="my-3">
-			<a href="{{ path('main') }}" class="btn btn-outline-primary">
-				Accueil
-			</a>
-		</div>
+		<a href="{{ path('main') }}" class="btn btn-outline-primary">
+			Accueil
+		</a>
 
 		<div class="container d-flex flex-wrap justify-content-around gap-3 p-3">
 			{% for product in products %}

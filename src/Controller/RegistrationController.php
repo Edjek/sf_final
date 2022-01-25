@@ -45,9 +45,9 @@ class RegistrationController extends AbstractController
                 $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
-                    )
-                );
-                
+                )
+            );
+
             $user_mail = $form->get('email')->getData();
             $user_name = $form->get('lastname')->getData();
             $user_firstname = $form->get('firstname')->getData();
@@ -62,7 +62,7 @@ class RegistrationController extends AbstractController
                 ->subject('Mise à jour de votre compte')
                 ->htmlTemplate('front/mail/email.html.twig')
                 ->context([
-                    'name' =>$user_name,
+                    'name' => $user_name,
                     'firstname' => $user_firstname,
                 ]);
             $mailerInterface->send($email);
@@ -94,15 +94,10 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         $user = $userRepository->findOneBy(['email' => $this->getUser()->getUserIdentifier()]);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            // dump($user);die;
-            // encode the plain password
 
-            $session = new Session();
-            $session->start();
-
-            // set and get session attributes
-            $session->set('email', $this->getUser()->getUserIdentifier());
+            $user->setDate(new \DateTime("NOW"));
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -126,7 +121,6 @@ class RegistrationController extends AbstractController
                 'notice',
                 'Votre compte a été mis à jour'
             );
-
 
             return $userAuthenticator->authenticateUser(
                 $user,
