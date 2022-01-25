@@ -95,6 +95,14 @@ class AppFixtures extends Fixture
             $user->setEmail($faker->email);
             $user->setRoles(["ROLE_USER"]);
             $user->setPassword($faker->password);
+            $user->setLastname($faker->lastname);
+            $user->setFirstname($faker->firstname);
+            $user->setCity($faker->city);
+            $user->setAdress($faker->address);
+            $user->setZipcode($faker->postcode);
+            $user->setDate($faker->dateTimeThisYear);
+            $user->setCardNumber($faker->creditCardNumber);
+            $user->setCardName($faker->lastName);
 
             $manager->persist($user);
             $manager->flush();

@@ -23,6 +23,16 @@
 			<p>{{ product.licence.name }}</p>
 			<p>{{ product.category.name }}</p>
 		</div>
+
+{% if app.user %}
+		<form action="{{ path('comment')}}" method="get">
+			<div class="input-group">
+				<input type="text" name="search" placeholder="Recherche" class="form-control search-input">
+				<input type="submit" class="btn btn-outline-primary" value="Recherche">
+			</div>
+		</form>
+{% endif %}
+
 	</div>
 
 {% endblock %}

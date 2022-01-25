@@ -30,9 +30,14 @@
 
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-			<button class="btn btn-lg btn-outline-dark mt-3" type="submit">
-				Connection
-			</button>
+			<div class="mb-3">
+				<input type="submit" class="btn btn-lg btn-outline-primary mt-3">
+			</div>
 		</form>
+		<div class="mb-3">
+			<a href="{{path('app_register')}}" class="btn btn-lg btn-outline-danger">
+				Créer un compte
+			</a>
+		</div>
 	</div>
 {% endblock %}

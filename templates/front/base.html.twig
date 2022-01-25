@@ -39,25 +39,22 @@
 					<a href="{{path('licence_list')}}" class="text-decoration-none">
 						Licences
 					</a>
-					{% if app.user is null %}
-						<a href="{{path('app_register')}}" class="text-decoration-none">
-							Sign up
-						</a>/
-						<a href="{{path('app_login')}}" class="text-decoration-none">
-							Sign in
-						</a>
-					{% else %}
+					{% if app.user %}
+						{% if app.user.roles[0] == 'ROLE_ADMIN' %}
+							<a href="{{path('admin_main')}}" class="btn btn-outline-dark admin">
+								Administration
+							</a>
+						{% endif %}
 						<a href="{{path('update_user')}}" class="btn btn-outline-primary">
 							Mon compte
 						</a>
 						<a href="{{path('app_logout')}}" class="btn btn-outline-primary">
 							Logout
 						</a>
-						{% if app.user.roles[0] == 'ROLE_ADMIN' %}
-							<a href="{{path('admin_main')}}" class="btn btn-outline-dark admin">
-								Administration
-							</a>
-						{% endif %}
+					{% else %}
+						<a href="{{path('app_login')}}" class="text-decoration-none">
+							Sign up/Sign in
+						</a>
 					{% endif %}
 				</div>
 				<a href="#" class="btn btn-outline-primary">
