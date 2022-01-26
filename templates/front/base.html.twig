@@ -23,7 +23,7 @@
 	<body>
 		<header class="header border-bottom mb-5 p-1">
 			<nav class="navbar navbar-default navbar-fixed-top navbar">
-				<a href="{{path('main')}}" class="text-decoration-none">
+				<a href="{{path('main')}}" class="text-decoration-none btn btn-link">
 					<img src="{{ asset('img/logo/logo.jpg') }}" alt="" width="70"/>Accueil
 				</a>
 				<form action="{{ path('search')}}" method="get">
@@ -33,26 +33,26 @@
 					</div>
 				</form>
 				<div class="d-flex justify-content-between gap-3">
-					<a href="{{path('category_list')}}" class="text-decoration-none">
+					<a href="{{path('category_list')}}" class="text-decoration-none btn btn-link">
 						Categories
 					</a>
-					<a href="{{path('licence_list')}}" class="text-decoration-none">
+					<a href="{{path('licence_list')}}" class="text-decoration-none btn btn-link">
 						Licences
 					</a>
 					{% if app.user %}
 						{% if app.user.roles[0] == 'ROLE_ADMIN' %}
-							<a href="{{path('admin_main')}}" class="text-decoration-none">
+							<a href="{{path('admin_main')}}" class="text-decoration-none btn btn-link">
 								Administration
 							</a>
 						{% endif %}
-						<a href="{{path('update_user')}}" class="text-decoration-none">
+						<a href="{{path('update_user')}}" class="text-decoration-none btn btn-link">
 							Mon compte
 						</a>
-						<a href="{{path('app_logout')}}" class="text-decoration-none">
+						<a href="{{path('app_logout')}}" class="text-decoration-none btn btn-link">
 							Logout
 						</a>
 					{% else %}
-						<a href="{{path('app_login')}}" class="text-decoration-none">
+						<a href="{{path('app_login')}}" class="text-decoration-none btn btn-link">
 							Sign up / Sign in
 						</a>
 					{% endif %}
