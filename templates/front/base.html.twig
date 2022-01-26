@@ -60,12 +60,24 @@
 				<a href="#" class="btn btn-outline-primary">
 					<i class="bi bi-cart2"></i>
 				</a>
+			</nav>
 
+			<nav class="navbar navbar-default navbar-fixed-top navbar">
+				{% for category in gcategories.getAll %}
+					<a href="{{ path('category_list') }}" class="text-decoration-none">
+						{{ category.name }}
+					</a>
+				{% endfor %}
+				{% for licence in glicences.getAll %}
+					<a href="{{ path('licence_list') }}" class="text-decoration-none">
+						{{ licence.name }}
+					</a>
+				{% endfor %}
 			</nav>
 		</header>
 
 		{% for message in app.flashes('notice') %}
-			<div class="alert alert-success alert-dismissible fade show w-75 m-auto" role="alert">
+			<div class=" alert alert-success alert-dismissible fade show w-75 m-auto" role=" alert">
 				{{ message }}
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
@@ -75,4 +87,4 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	</body>
-</html>
+</html></body></html>
