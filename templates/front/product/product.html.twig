@@ -22,6 +22,25 @@
 			<p>{{ product.stock }}</p>
 			<p>{{ product.licence.name }}</p>
 			<p>{{ product.category.name }}</p>
+			<p>
+				<a href="{{ path('product_like', { 'id' : product.id }) }}" class="text-decoration-none js-likes">
+					{% if app.user and product.isLikeByUser(app.user) %}
+						<i class="like bi bi-hand-thumbs-up-fill"></i>
+					{% else %}
+						<i class="like bi bi-hand-thumbs-up"></i>
+					{% endif %}
+					<span class="js-likes">{{ product.likes | length }}</span>
+				</a>
+
+				<a href="{{ path('product_dislike', { 'id' : product.id }) }}" class="text-decoration-none text-danger js-dislikes">
+					{% if app.user and product.isDislikeByUser(app.user) %}
+						<i class="dislike bi bi-hand-thumbs-down-fill text-danger"></i>
+					{% else %}
+						<i class="dislike bi bi-hand-thumbs-down text-danger"></i>
+					{% endif %}
+					<span class="js-dislikes">{{ product.dislikes | length }}</span>
+				</a>
+			</p>
 		</div>
 
 		{% if product.comments %}
