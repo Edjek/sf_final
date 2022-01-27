@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Repository\UserRepository;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -60,5 +61,19 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
 
         return $this->redirectToRoute('show_cart');
+    }
+
+    #[Route('/cart/infos', name: 'cart_info')]
+    public function carInfos(UserRepository $userRepository): Response
+    {
+        $user = $this->getUser();
+
+        if ($user) {
+            $user_mail = $user->getUserIdentifier();
+            $user_true = $userRepository->findOneBy(['email', $user_mail]);
+            return $this->render('front/cart/cartinfo.html.twig', ['user'=>$user]);
+        } else {
+            return $this->render('front/cart/cartinfo.html.twig');
+        }
     }
 }
