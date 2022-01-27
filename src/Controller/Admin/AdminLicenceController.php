@@ -23,7 +23,7 @@ class AdminLicenceController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/create/licence', name: 'admin_create_licence')]
+    #[Route('/admin/licence/create', name: 'admin_create_licence')]
     public function createLicence(EntityManagerInterface $entityManagerInterface, Request $request)
     {
         $licence = new Licence();
@@ -47,7 +47,7 @@ class AdminLicenceController extends AbstractController
         return $this->render("admin/admin_licence/licenceform.html.twig", ['licenceForm' => $licenceForm->createView()]);
     }
 
-    #[Route('/admin/update/licence/{id}', name: 'admin_update_licence')]
+    #[Route('/admin/licence/update/{id}', name: 'admin_update_licence')]
     public function updateLicence(
         $id,
         LicenceRepository $licenceRepository,
@@ -76,7 +76,7 @@ class AdminLicenceController extends AbstractController
         return $this->render("admin/admin_licence/licenceform.html.twig", ['licenceForm' => $licenceForm->createView()]);
     }
 
-    #[Route('/admin/delete/licence/{id}', name: 'admin_delete_licence')]
+    #[Route('/admin/licence/delete/{id}', name: 'admin_delete_licence')]
     public function deleteLicence($id, LicenceRepository $licenceRepository, EntityManagerInterface $entityManagerInterface)
     {
         $licence = $licenceRepository->find($id);

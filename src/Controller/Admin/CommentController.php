@@ -22,7 +22,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/create/comment', name: 'admin_create_comment')]
+    #[Route('/admin/comment/create', name: 'admin_create_comment')]
     public function createComment(EntityManagerInterface $entityManagerInterface, Request $request)
     {
         $comment = new Comment();
@@ -46,7 +46,7 @@ class CommentController extends AbstractController
         return $this->render("admin/admin_comment/commentform.html.twig", ['commentForm' => $commentForm->createView()]);
     }
 
-    #[Route('/admin/update/comment/{id}', name: 'admin_update_comment')]
+    #[Route('/admin/comment/update/{id}', name: 'admin_update_comment')]
     public function updateComment(
         $id,
         CommentRepository $commentRepository,
@@ -75,7 +75,7 @@ class CommentController extends AbstractController
         return $this->render("admin/admin_comment/commentform.html.twig", ['commentForm' => $commentForm->createView()]);
     }
 
-    #[Route('/admin/delete/comment/{id}', name: 'admin_delete_comment')]
+    #[Route('/admin/comment/delete/{id}', name: 'admin_delete_comment')]
     public function deleteComment($id, CommentRepository $commentRepository, EntityManagerInterface $entityManagerInterface)
     {
         $comment = $commentRepository->find($id);

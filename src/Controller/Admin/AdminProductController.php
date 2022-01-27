@@ -23,7 +23,7 @@ class AdminProductController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/create/product', name: 'admin_create_product')]
+    #[Route('/admin/product/create', name: 'admin_create_product')]
     public function createProduct(EntityManagerInterface $entityManagerInterface, Request $request)
     {
         $product = new Product();
@@ -47,7 +47,7 @@ class AdminProductController extends AbstractController
         return $this->render("admin/admin_product/productform.html.twig", ['productForm' => $productForm->createView()]);
     }
 
-    #[Route('/admin/update/product/{id}', name: 'admin_update_product')]
+    #[Route('/admin/product/update/{id}', name: 'admin_update_product')]
     public function updateProduct(
         $id,
         ProductRepository $productRepository,
@@ -76,7 +76,7 @@ class AdminProductController extends AbstractController
         return $this->render("admin/admin_product/productform.html.twig", ['productForm' => $productForm->createView()]);
     }
 
-    #[Route('/admin/delete/product/{id}', name: 'admin_delete_product')]
+    #[Route('/admin/product/delete/{id}', name: 'admin_delete_product')]
     public function deleteProduct($id, ProductRepository $productRepository, EntityManagerInterface $entityManagerInterface)
     {
         $product = $productRepository->find($id);

@@ -23,7 +23,7 @@ class AdminCategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/create/category', name: 'admin_create_category')]
+    #[Route('/admin/category/create', name: 'admin_create_category')]
     public function createCategory(EntityManagerInterface $entityManagerInterface, Request $request)
     {
         $category = new Category();
@@ -47,7 +47,7 @@ class AdminCategoryController extends AbstractController
         return $this->render("admin/admin_category/categoryform.html.twig", ['categoryForm' => $categoryForm->createView()]);
     }
 
-    #[Route('/admin/update/category/{id}', name: 'admin_update_category')]
+    #[Route('/admin/category/update/{id}', name: 'admin_update_category')]
     public function updateCategory(
         $id,
         CategoryRepository $categoryRepository,
@@ -76,7 +76,7 @@ class AdminCategoryController extends AbstractController
         return $this->render("admin/admin_category/categoryform.html.twig", ['categoryForm' => $categoryForm->createView()]);
     }
 
-    #[Route('/admin/delete/category/{id}', name: 'admin_delete_category')]
+    #[Route('/admin/category/delete/{id}', name: 'admin_delete_category')]
     public function deleteCategory($id, CategoryRepository $categoryRepository, EntityManagerInterface $entityManagerInterface)
     {
         $category = $categoryRepository->find($id);
