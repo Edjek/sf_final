@@ -4,62 +4,28 @@
 {% endblock %}
 
 {% block body %}
-
-	{% if app.user %}
-		<div class="container w-50 border-bottom p-3">
-			{% for comment in app.user.comments %}
-				<div class="border-bottom p-3 my-3">
-					<h2>Commentaires sur
-						{{ comment.product.name }}
-					</h2>
-					<p>{{ comment.content }}</p>
-					<p>Le:
-						{{ comment.date | date('d-m-Y')}}</p>
-					<a href="{{ path('update_comment',{ 'id': comment.id }) }}" class="btn btn-outline-primary">Modifier</a>
-					<a href="{{ path('delete_comment',{'id' :comment.id }) }}" class="btn btn-outline-danger">Supprimer</a>
-				</div>
-			{% endfor %}
-		</div>
-	{% endif %}
 	<div class="container p-3 w-50">
 
 		{{ form_start(registrationForm) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.lastname, {label: 'Nom' ,'attr' : { 'class' : 'form-control'} }) }}
-		</div>
+		{{ form_row(registrationForm.lastname) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.firstname, {label: 'Prénom' ,'attr' : { 'class' : 'form-control'} }) }}
-		</div>
+		{{ form_row(registrationForm.firstname) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.adress, {label: 'Adresse' ,'attr' : { 'class' : 'form-control'} }) }}
-		</div>
+		{{ form_row(registrationForm.adress) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.zipcode, {label: 'Code postal' ,'attr' : { 'class' : 'form-control'} }) }}
-		</div>
+		{{ form_row(registrationForm.zipcode) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.city, {label: 'Ville' ,'attr' : { 'class' : 'form-control'} }) }}
-		</div>
+		{{ form_row(registrationForm.city) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.email, {'attr' : { 'class' : 'form-control'} }) }}
-		</div>
+		{{ form_row(registrationForm.email) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.plainPassword, { label: 'Mot de passe' ,'attr' : { 'class' : 'form-control' }}) }}
-		</div>
+		{{ form_row(registrationForm.plainPassword) }}
 
-		<div class="mb-3">
-			{{ form_row(registrationForm.agreeTerms, { label: 'accepter les conditions'}) }}
-		</div>
+		{{ form_row(registrationForm.agreeTerms) }}
 
-		<input type="submit" class="btn btn-outline-dark me-2">
-		{% if app.user %}
-			<a href="{{ path('delete_user') }}" class="btn btn-outline-danger">Supprimer</a>
-		{% endif %}
-		{{ form_end(registrationForm) }}</div>
+		{{ form_row(registrationForm.enregistrer) }}
+
+		{{ form_end(registrationForm) }}
+	</div>
 {% endblock %}

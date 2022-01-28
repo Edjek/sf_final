@@ -4,9 +4,11 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="container d-flex justify-content-around gap-3">
 		{% for product in products %}
 			<div class="card text-center" style="width: 18rem;">
+
 				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -29,6 +31,7 @@
 						<span class="visually-hidden">Next</span>
 					</button>
 				</div>
+
 				<div class="card-body">
 					<h1 class="card-title">{{ product.name }}</h1>
 					<h4 class="card-title">{{ product.category.name }}</h4>

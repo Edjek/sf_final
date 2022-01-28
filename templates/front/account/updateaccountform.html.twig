@@ -1,0 +1,33 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+		<div class="container w-50 border-bottom p-3">
+			{% for comment in app.user.comments %}
+				<div class="border-top p-3 my-3">
+					<h2>Commentaires sur
+						{{ comment.product.name }}
+					</h2>
+					<p>{{ comment.content }}</p>
+					<p>Le:
+						{{ comment.date | date('d-m-Y')}}</p>
+					<a href="{{ path('update_comment',{ 'id': comment.id }) }}" class="btn btn-outline-primary">Modifier</a>
+					<a href="{{ path('delete_comment',{'id' :comment.id }) }}" class="btn btn-outline-danger">Supprimer</a>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<div class="container p-3 w-50">
+		{{ form_start(registrationForm) }}
+
+		{{ form_end(registrationForm) }}
+
+		{% if app.user %}
+			<a href="{{ path('delete_account') }}" class="btn btn-outline-danger">Supprimer mon compte</a>
+		{% endif %}
+	</div>
+{% endblock %}

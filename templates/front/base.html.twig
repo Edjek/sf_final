@@ -33,23 +33,30 @@
 					</div>
 				</form>
 				<div class="d-flex justify-content-between gap-3">
-					<a href="{{path('category_list')}}" class="text-decoration-none btn btn-link">
-						Categories
-					</a>
-					<a href="{{path('licence_list')}}" class="text-decoration-none btn btn-link">
-						Licences
-					</a>
 					{% if app.user %}
-						{% if app.user.roles[0] == 'ROLE_ADMIN' %}
+						{% if is_granted('ROLE_ADMIN') is null %}
+							<a href="{{path('category_list')}}" class="text-decoration-none btn btn-link">
+								Categories
+							</a>
+							<a href="{{path('licence_list')}}" class="text-decoration-none btn btn-link">
+								Licences
+							</a>
+						{% endif %}
+					{% endif %}
+					{% if app.user %}
+						{% if is_granted('ROLE_ADMIN') %}
 							<a href="{{path('admin_main')}}" class="text-decoration-none btn btn-link">
 								Administration
 							</a>
 						{% endif %}
-						<a href="{{path('update_user')}}" class="text-decoration-none btn btn-link">
+						<a href="{{path('update_account')}}" class="text-decoration-none btn btn-link">
 							Mon compte
 						</a>
 						<a href="{{path('app_logout')}}" class="text-decoration-none btn btn-link">
 							Logout
+						</a>
+						<a href="{{ path('show_cart') }}" class="btn btn-outline-primary">
+							<i class="bi bi-cart2"></i>
 						</a>
 					{% else %}
 						<a href="{{path('app_login')}}" class="text-decoration-none btn btn-link">
@@ -57,9 +64,6 @@
 						</a>
 					{% endif %}
 				</div>
-				<a href="{{ path('show_cart') }}" class="btn btn-outline-primary">
-					<i class="bi bi-cart2"></i>
-				</a>
 			</nav>
 
 			<nav class="navbar navbar-default navbar-fixed-top navbar">

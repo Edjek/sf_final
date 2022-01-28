@@ -34,7 +34,7 @@ class CommentController extends AbstractController
                 'Le commentaire a été modifié'
             );
 
-            return $this->redirectToRoute('update_user');
+            return $this->redirectToRoute('update_account');
         }
 
         return $this->render("front/comment/commentform.html.twig", ['commentForm' => $commentForm->createView()]);
@@ -54,6 +54,6 @@ class CommentController extends AbstractController
             'Le commentaire a été supprimé'
         );
 
-        return $this->redirectToRoute("update_user");
+        return $this->redirectToRoute("update_account");
     }
 }
